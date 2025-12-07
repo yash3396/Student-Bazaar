@@ -15,17 +15,12 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 COPY web ./web
 
-# Build the WAR file and fat JAR
-RUN mvn clean package -DskipTests && \
-    echo "=== Checking if app.jar was created ===" && \
-    ls -lh target/app.jar && \
-    echo "=== Checking JAR contents ===" && \
-    jar tf target/app.jar | grep JettyLauncher
+# Build the WAR file
+RUN mvn clean package -DskipTests
 
 # Expose port (Railway will set PORT environment variable)
 EXPOSE 8080
 
-# Run the application using fat JAR with all dependencies
-# Railway will provide PORT environment variable
-CMD ["java", "-jar", "target/app.jar"]
+# Run using Jetty Maven plugin
+CMD ["mvn", "jetty:run-war"]
 

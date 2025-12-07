@@ -127,43 +127,22 @@
                 <version>3.2.0</version>
             </plugin>
             
-            <!-- Embedded Tomcat Plugin for running WAR file -->
+            <!-- Jetty Maven Plugin for running WAR file -->
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.51.v20230217</version>
                 <configuration>
-                    <port>${PORT:8080}</port>
-                    <path>/</path>
-                    <uriEncoding>UTF-8</uriEncoding>
+                    <war>${project.build.directory}/${project.build.finalName}.war</war>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                    <httpConnector>
+                        <port>8080</port>
+                    </httpConnector>
+                    <stopKey>STOP</stopKey>
+                    <stopPort>9999</stopPort>
                 </configuration>
-            </plugin>
-            
-            <!-- Maven Assembly Plugin to create fat JAR with all dependencies -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.6.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <archive>
-                                <manifest>
-                                    <mainClass>com.studentbazaar.JettyLauncher</mainClass>
-                                </manifest>
-                            </archive>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                            <finalName>app</finalName>
-                            <appendAssemblyId>false</appendAssemblyId>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
