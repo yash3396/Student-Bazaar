@@ -1,0 +1,95 @@
+# NetBeans IDE
+nbproject/
+build/
+dist/
+.nb-gradle/
+*.iml
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# IDE - VS Code
+.vscode/
+
+# Compiled Java files
+*.class
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.nar
+
+# Log files
+*.log
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Server files (GlassFish/Tomcat)
+glassfish/
+apache-tomcat/
+target/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads folder - user uploaded images (keep structure but not files)
+build/web/uploads/*
+!build/web/uploads/.gitkeep
+web/uploads/*
+!web/uploads/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.cache
+*.swp
+*.swo
+*~
+
+# Environment and configuration files with sensitive data
+.env
+config.properties
+application.properties
+*.key
+*.pem
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Node modules (if you add any frontend tools)
+node_modules/
+package-lock.json
+
+# Generated files
+*.generated.*
+**/generated/
+
