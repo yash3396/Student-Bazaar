@@ -1,0 +1,66 @@
+===========================================
+GITHUB UPLOAD - COMPLETE STEP-BY-STEP
+===========================================
+
+✅ STEP 1: Configure Git (Run these commands)
+---------------------------------------------
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+Example:
+git config --global user.name "Yash Verma"
+git config --global user.email "yash.verma@example.com"
+
+
+✅ STEP 2: Make First Commit (Already prepared, just run)
+---------------------------------------------
+git commit -m "Initial commit: Student Bazaar marketplace project"
+
+
+✅ STEP 3: Create GitHub Repository
+---------------------------------------------
+1. Go to: https://github.com
+2. Click "+" icon → "New repository"
+3. Name: student-bazaar
+4. Description: "Java-based marketplace for students"
+5. Choose: Private (recommended) or Public
+6. DO NOT check any boxes (README, .gitignore, license)
+7. Click "Create repository"
+
+
+✅ STEP 4: Connect and Push (Replace YOUR_USERNAME)
+---------------------------------------------
+git remote add origin https://github.com/YOUR_USERNAME/student-bazaar.git
+git branch -M main
+git push -u origin main
+
+
+✅ STEP 5: Authentication
+---------------------------------------------
+When asked for password, use Personal Access Token:
+1. GitHub → Settings → Developer settings
+2. Personal access tokens → Tokens (classic)
+3. Generate new token (classic)
+4. Name: "Student Bazaar"
+5. Select scope: "repo" (check the box)
+6. Generate token
+7. COPY THE TOKEN
+8. Use token as password when pushing
+
+
+✅ STEP 6: Verify
+---------------------------------------------
+Go to your GitHub repository page and check if files are there!
+
+
+===========================================
+WHAT'S ALREADY DONE:
+===========================================
+✅ .gitignore created
+✅ README.md created
+✅ Git initialized
+✅ All files added to staging
+⏳ Waiting for: Git config, commit, and GitHub setup
+
+===========================================
+
