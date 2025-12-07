@@ -15,14 +15,13 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 COPY web ./web
 
-# Build the WAR file and copy dependencies
-RUN mvn clean package -DskipTests && \
-    mvn dependency:copy-dependencies -DoutputDirectory=target/lib
+# Build the WAR file and fat JAR
+RUN mvn clean package -DskipTests
 
 # Expose port (Railway will set PORT environment variable)
 EXPOSE 8080
 
-# Run the application using Jetty launcher JAR
+# Run the application using fat JAR with all dependencies
 # Railway will provide PORT environment variable
-CMD ["java", "-jar", "target/Student_Bazar-launcher.jar"]
+CMD ["java", "-jar", "target/app.jar"]
 
