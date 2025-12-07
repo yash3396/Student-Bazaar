@@ -1,5 +1,5 @@
-# Use OpenJDK 8 as base image
-FROM openjdk:8-jdk-slim
+# Use Eclipse Temurin (OpenJDK) 8 as base image (actively maintained)
+FROM eclipse-temurin:8-jdk
 
 # Set working directory
 WORKDIR /app
