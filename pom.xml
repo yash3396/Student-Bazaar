@@ -95,6 +95,7 @@
     
     <build>
         <finalName>Student_Bazar</finalName>
+        <sourceDirectory>src/java</sourceDirectory>
         <plugins>
             <!-- Maven Compiler Plugin -->
             <plugin>

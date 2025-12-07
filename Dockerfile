@@ -16,7 +16,11 @@ COPY src ./src
 COPY web ./web
 
 # Build the WAR file and fat JAR
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests && \
+    echo "=== Checking if app.jar was created ===" && \
+    ls -lh target/app.jar && \
+    echo "=== Checking JAR contents ===" && \
+    jar tf target/app.jar | grep JettyLauncher
 
 # Expose port (Railway will set PORT environment variable)
 EXPOSE 8080
