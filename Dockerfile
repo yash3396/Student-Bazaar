@@ -21,9 +21,7 @@ RUN mvn clean package -DskipTests
 # Expose port (Railway will set PORT environment variable)
 EXPOSE 8080
 
-# Use embedded Tomcat to run the WAR file
+# Run the application using embedded Tomcat launcher
 # Railway will provide PORT environment variable
-CMD java -jar -Dserver.port=${PORT:-8080} target/Student_Bazar.war || \
-    java -cp "target/Student_Bazar/WEB-INF/lib/*:target/classes" org.apache.catalina.startup.Bootstrap || \
-    mvn jetty:run -Djetty.port=${PORT:-8080}
+CMD java -cp "target/classes:target/lib/*" com.studentbazaar.TomcatLauncher
 

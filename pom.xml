@@ -66,6 +66,18 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Embedded Tomcat for standalone deployment -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.80</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>9.0.80</version>
+        </dependency>
     </dependencies>
     
     <build>
@@ -111,6 +123,24 @@
                     <path>/</path>
                     <uriEncoding>UTF-8</uriEncoding>
                 </configuration>
+            </plugin>
+            
+            <!-- Maven Dependency Plugin to copy dependencies -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
