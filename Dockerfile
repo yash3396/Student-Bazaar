@@ -15,13 +15,14 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 COPY web ./web
 
-# Build the WAR file
-RUN mvn clean package -DskipTests
+# Build the WAR file and copy dependencies
+RUN mvn clean package -DskipTests && \
+    mvn dependency:copy-dependencies -DoutputDirectory=target/lib
 
 # Expose port (Railway will set PORT environment variable)
 EXPOSE 8080
 
 # Run the application using embedded Tomcat launcher
 # Railway will provide PORT environment variable
-CMD java -cp "target/classes:target/lib/*" com.studentbazaar.TomcatLauncher
+CMD ["java", "-cp", "target/classes:target/lib/*", "com.studentbazaar.TomcatLauncher"]
 
