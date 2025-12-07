@@ -22,7 +22,7 @@ RUN mvn clean package -DskipTests && \
 # Expose port (Railway will set PORT environment variable)
 EXPOSE 8080
 
-# Run the application using Jetty launcher
+# Run the application using Jetty launcher JAR
 # Railway will provide PORT environment variable
-CMD ["java", "-cp", "target/classes:target/lib/*", "com.studentbazaar.JettyLauncher"]
+CMD ["java", "-jar", "target/Student_Bazar-launcher.jar"]
 
