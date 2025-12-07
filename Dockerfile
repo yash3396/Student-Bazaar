@@ -17,7 +17,13 @@ COPY web ./web
 
 # Build the WAR file and copy dependencies
 RUN mvn clean package -DskipTests && \
-    mvn dependency:copy-dependencies -DoutputDirectory=target/lib
+    mvn dependency:copy-dependencies -DoutputDirectory=target/lib && \
+    echo "=== Build completed ===" && \
+    ls -la target/ && \
+    echo "=== Checking classes ===" && \
+    ls -la target/classes/com/studentbazaar/ && \
+    echo "=== Checking lib ===" && \
+    ls -la target/lib/ | head -20
 
 # Expose port (Railway will set PORT environment variable)
 EXPOSE 8080

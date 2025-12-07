@@ -22,20 +22,18 @@
     </properties>
     
     <dependencies>
-        <!-- Servlet API -->
+        <!-- Servlet API - changed to compile scope for embedded Tomcat -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
-            <scope>provided</scope>
         </dependency>
         
-        <!-- JSP API -->
+        <!-- JSP API - changed to compile scope for embedded Tomcat -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>2.3.3</version>
-            <scope>provided</scope>
         </dependency>
         
         <!-- JSTL -->
