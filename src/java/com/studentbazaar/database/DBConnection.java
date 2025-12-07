@@ -47,6 +47,13 @@ public class DBConnection {
             System.out.println("Database type: " + (isPostgreSQL ? "PostgreSQL" : "MySQL"));
             System.out.println("URL: " + (DB_URL.contains("@") ? "***" : DB_URL)); // Hide credentials in logs
             
+            // Check if DATABASE_URL is set for cloud deployment
+            if (System.getenv("DATABASE_URL") == null) {
+                System.err.println("WARNING: DATABASE_URL not set. Database features will not work.");
+                System.err.println("Please add a PostgreSQL database in Railway and set DATABASE_URL variable.");
+                throw new SQLException("Database not configured. Please add DATABASE_URL environment variable.");
+            }
+            
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             System.out.println("Database connection successful!");
             return conn;
