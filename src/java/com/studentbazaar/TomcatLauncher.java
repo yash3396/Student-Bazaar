@@ -11,9 +11,14 @@ public class TomcatLauncher {
             port = "8080";
         }
         
+        // Create base directory for Tomcat
+        File baseDir = new File("tomcat-temp");
+        baseDir.mkdirs();
+        
         Tomcat tomcat = new Tomcat();
+        tomcat.setBaseDir(baseDir.getAbsolutePath());
         tomcat.setPort(Integer.parseInt(port));
-        tomcat.getConnector();
+        tomcat.getConnector(); // Initialize connector
         
         // Point to the WAR file
         String warPath = "target/Student_Bazar.war";
@@ -24,10 +29,14 @@ public class TomcatLauncher {
             System.exit(1);
         }
         
+        System.out.println("Starting Tomcat on port " + port);
+        System.out.println("WAR file: " + warFile.getAbsolutePath());
+        
+        // Add webapp with context path "/"
         Context context = tomcat.addWebapp("", warFile.getAbsolutePath());
         
-        System.out.println("Starting Tomcat on port " + port);
         tomcat.start();
+        System.out.println("Tomcat started successfully!");
         tomcat.getServer().await();
     }
 }
